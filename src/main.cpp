@@ -6,6 +6,19 @@ Vector2 Seek(Vector2 target, Vector2 position, Vector2 velocity, float speed)
     return Normalize(target - position) * speed - velocity;
 }
 
+class Table {
+
+public:
+    float x, y;
+    Color color;
+    float length, width, height;
+    float weight;
+    int legs;
+
+};
+
+
+
 int main()
 {
     const int screenWidth = 1280;
@@ -17,20 +30,10 @@ int main()
     Vector2 position{ screenWidth * 0.5f, screenHeight * 0.5f };
     Vector2 velocity{ Random(-10.0f, 10.0f), Random(-10.0f, 10.0f) };
 
-    while (!WindowShouldClose())
-    {
-        float dt = GetFrameTime();
-        Vector2 mouse = GetMousePosition();
-        velocity = velocity + Seek(mouse, position, velocity, 1000.0f) * dt;
-        position = position + velocity * dt;
-
-        if (CheckCollisionPointCircle(mouse, position, radius))
-            break;
-
+    while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("Don't let the circle touch the cursor!", 10, 10, 20, RED);
-        DrawCircleV(position, radius, RED);
+        DrawText("Some text", 100, 100, 40, RED);
         EndDrawing();
     }
 
